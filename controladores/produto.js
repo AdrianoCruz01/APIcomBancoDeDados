@@ -1,7 +1,8 @@
 const conexao = require('../conexao');
 
 const criarProduto = async (req, res) => {
-    const { nome, empresa, foto, valor, descricao, especificacoes, etiquetaEcologicas } = req.body;
+    const { nome, empresa, foto, valor, descricao, especificacoes, etiquetasEcologicas } = req.body;
+
 
     if (!nome, !empresa, !valor, !descricao, !especificacoes) {
         return res.status(400).json('Campo obrigatório não preenchido.');
@@ -9,9 +10,9 @@ const criarProduto = async (req, res) => {
 
     try {
 
-        const query = 'INSERT INTO produtos (nome, empresa, foto, valor, descricao, especificacoes, etiquetaEcologicas) VALUES ($1, $2, $3, $4, $5, $6, $7,)';
+        const query = 'INSERT INTO produtos (nome, empresa, foto, valor, descricao, especificacoes, etiquetasEcologicas) VALUES ($1, $2, $3, $4, $5, $6, $7)';
 
-        const umProduto = await conexao.query(query, [nome, empresa, foto, valor, descricao, especificacoes, etiquetaEcologicas]);
+        const umProduto = await conexao.query(query, [nome, empresa, foto, valor, descricao, especificacoes, etiquetasEcologicas]);
 
         if (umProduto.rowCount === 0) {
             return res.status(400).json('Não foi possível cadastrar o produto.');
@@ -20,7 +21,7 @@ const criarProduto = async (req, res) => {
         return res.status(200).json('Produto cadastrado com sucesso.');
 
     } catch (error) {
-        return res.status(400).json(error.mensage);
+        return res.status(400).json(error.message);
     }
 }
 
@@ -32,7 +33,7 @@ const listarProdutos = async (req, res) => {
         return res.status(200).json(produtos);
 
     } catch (error) {
-        return res.status(400).json(error.mensage);
+        return res.status(400).json(error.message);
     }
 }
 
@@ -50,7 +51,7 @@ const obterProduto = async (req, res) => {
         return res.status(200).json(produtos.rows[0]);
 
     } catch (error) {
-        return res.status(400).json(error.mensage);
+        return res.status(400).json(error.message);
     }
 }
 
