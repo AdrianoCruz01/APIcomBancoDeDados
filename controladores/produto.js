@@ -8,7 +8,6 @@ const criarProduto = async (req, res) => {
     }
 
     try {
-
         const query = 'INSERT INTO produtos (nome, empresa, foto, valor, descricao, especificacoes, etiquetasEcologicas) VALUES ($1, $2, $3, $4, $5, $6, $7)';
 
         const umProduto = await conexao.query(query, [nome, empresa, foto, valor, descricao, especificacoes, etiquetasEcologicas]);
@@ -26,7 +25,6 @@ const criarProduto = async (req, res) => {
 
 const listarProdutos = async (req, res) => {
     try {
-
         const { rows: produtos } = await conexao.query('SELECT * FROM produtos');
 
         return res.status(200).json(produtos);
@@ -40,7 +38,6 @@ const obterProduto = async (req, res) => {
     const { id } = req.params;
 
     try {
-
         const produtos = await conexao.query('SELECT * FROM produtos WHERE id = $1', [id]);
 
         if (produtos.rowCount === 0) {
@@ -59,7 +56,6 @@ const atualizarProduto = async (req, res) => {
     const { nome, valor } = req.body;
 
     try {
-
         const produtos = await conexao.query('SELECT * FROM produtos WHERE id = $1', [id]);
 
         if (produtos.rowCount === 0) {
