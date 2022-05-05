@@ -10,3 +10,10 @@ CREATE TABLE produtos (
   	especificacoes varchar(50) NOT NULL,
   	etiquetasEcologicas varchar(100) NULL
 );
+
+CREATE TABLE IS NOT EXISTS usuarios (
+	id serial primary key,
+	nome text NOT NULL,
+	email text NOT NULL,
+	senha text NOT NULL
+);
