@@ -1,10 +1,25 @@
 const conexao = require('../conexao');
+const jwt = require('jsonwebtoken');
+const jwtSecret = require('../jwt_secret');
 
 const criarProduto = async (req, res) => {
-    const { nome, empresa, foto, valor, descricao, especificacoes, etiquetasEcologicas } = req.body;
+    const { nome, empresa, foto, valor, descricao, especificacoes, etiquetasEcologicas, token } = req.body;
 
-    if (!nome, !empresa, !valor, !descricao, !especificacoes) {
+    if (!nome, !empresa, !valor, !descricao, !especificacoes, !token) {
         return res.status(400).json('Campo obrigatório não preenchido!');
+    }
+
+    try {
+        const usuario = jwt.verify(token, jwtSecret);
+
+        const query = 'SELECT * FROM usuarios WHERE email = $1';
+        const pessoa = await conexao.query(query, [usuario.email]);
+
+        if (!pessoa.rowCount) {
+            return res.status(400).json('Email não cadastrado');
+        }
+    } catch (error) {
+        return res.status(400).json(error.message);
     }
 
     try {
