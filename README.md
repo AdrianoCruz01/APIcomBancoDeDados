@@ -29,4 +29,4 @@ Para empresas, oferecemos uma maneira eficiente de alcançar clientes e gerencia
 
 ## Conclusão
 
-**Eccomerce do Adrian** é mais do que apenas um sistema de comércio eletrônico; é uma ponte entre empresas e consumidores. Seja você uma empresa procurando expandir seu alcance ou um cliente em busca de ótimas ofertas, estamos aqui para atender às suas necessidades.
+**Eccomerce do Adriano** é mais do que apenas um sistema de comércio eletrônico; é uma ponte entre empresas e consumidores. Seja você uma empresa procurando expandir seu alcance ou um cliente em busca de ótimas ofertas, estamos aqui para atender às suas necessidades.
